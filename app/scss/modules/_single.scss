@@ -10,15 +10,20 @@
   .single-title {
     margin-top:0;
   }
-
 }
 .single-edit {
-  margin-top:calc-em(20px);
   @extend %box-sizing;
+  @extend %clearfix;
+  margin-top:calc-em(20px);
   background: #fff;
   border: calc-em(1px) solid rgb(225, 225, 225);
   display: block;
   padding: calc-em(15px);
   text-decoration: none;
   color: $secondaryColor;
+
+  .btn-update {
+    background: $secondaryColor;
+    color: rgb(255,255,255);
+  }
 }

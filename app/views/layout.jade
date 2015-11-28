@@ -5,7 +5,8 @@ html
     block title
       title HeroyvJS
     link(rel='stylesheet', href='/css/app.css')
-    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
   body
     header.header
         
@@ -23,4 +24,23 @@ html
         div.content.column.medium-10
           block content
       
-    script(src='js/bundle.js')
+    script(src='../js/bundle.js')
+    script(src)
+    script(src='../vendor/jquery/dist/jquery.min.js')
+    script(src='../vendor/moment/moment.js')
+    script(src='../vendor/moment-timezone/moment-timezone.js')
+    script(src='../vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
+    script.
+      $(function () {
+          
+           $('#datetimepicker12').datetimepicker({
+               Default: false,
+               inline: true,
+               sideBySide: false
+           });
+           
+       });
+      
+    
+    
+      

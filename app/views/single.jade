@@ -15,11 +15,16 @@ block content
     div.column
       div.single-edit
         form(method='POST', action='/bookings/update/#{booking._id}?_method=PUT')
-          select(name='bookingType' value='#{booking.bookingType}')
-            option(value='0') Velg type
-            option(value='PT') PT
-            option(value='Gruppetime') Gruppetime
-          input(type='date', name='bookingDate', format='dd.mm.yyyy', value='#{booking.bookingDate}')
-          input(type='date', name='bookingTime', format='dd.mm.yyyy', value='#{booking.bookingTime}')
-          textarea(name='comments', placeholder='Comments') #{booking.comments}
-          button(type='submit') UPDATE
+          div.column.medium-6.no-pad-left
+            select(name='bookingType' value='#{booking.bookingType}')
+              option(value='0') Velg type
+              option(value='PT') PT
+              option(value='Gruppetime') Gruppetime
+          div.column.medium-6.no-pad-right
+            input(id='test', type='date', name='bookingDate', format='dd.mm.yyyy', value='#{booking.bookingTime}')
+            input(type='date', name='bookingTime', format='dd.mm.yyyy', value='#{booking.bookingTime}')
+            textarea(name='comments', placeholder='Comments') #{booking.comments}
+            button(type='submit', class="btn btn-update") UPDATE
+            
+            div#datetimepicker12
+            

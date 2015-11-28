@@ -3,6 +3,9 @@
 'foundation/foundation/components/grid',
 'foundation/foundation/components/block-grid';
 
+@import
+'datetimepicker/jquery.datetimepicker';
+
 
 @import
 'settings/variables',
@@ -17,4 +20,5 @@
 'modules/content',
 'modules/sidebar-menu',
 'modules/cards',
-'modules/single';
+'modules/single',
+'modules/datetimepicker';

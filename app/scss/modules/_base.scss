@@ -13,3 +13,51 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.no-pad-right {
+  padding-right:0;
+}
+.no-pad-left {
+  padding-left:0;
+}
+.no-pad {
+  padding:0;
+}
+
+
+$field-bg-color: rgb(240,240,240);
+$field-text: darken($field-bg-color, 40%);
+
+%field-style {
+  @extend %box-sizing;
+  padding:calc-em(10px);
+  width:100%;
+  height:calc-em(50px);
+  background:$field-bg-color;
+  color:$field-text;
+  border:solid 1px rgb(210,210,210);
+  border-radius:calc-em(2px);
+  margin-bottom:calc-em(20px);
+
+  @include field-placeholder {
+    color:$field-text;
+  }
+}
+
+//Form fields
+$fieldTypes:text,password,tel,email,date;
+
+@each $fieldType in $fieldTypes {
+  input[type= #{$fieldType} ] {
+    @extend %field-style;
+  }
+}
+
+select {
+    @extend %field-style;
+}
+textarea {
+    @extend %field-style;
+    resize:none;
+    height:calc-em(150px);
+}
