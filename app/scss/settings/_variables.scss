@@ -1,4 +1,11 @@
 $primaryColor:#34495e;
 $secondaryColor: darken($primaryColor, 5%);
 $tertiaryColor: lighten($primaryColor, 10%);
-$primaryFont: sans-serif;
+$primaryFont: 'Source Sans Pro', sans-serif;;
+
+$button-success-color: #5DAA78;
+$button-success-hover: darken($button-success-color, 5%);
+$button-delete-color: #914242;
+$button-delete-hover: darken($button-delete-color, 5%);
+$button-edit-color: $tertiaryColor;
+$button-edit-hover: darken($tertiaryColor, 5%);

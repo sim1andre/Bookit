@@ -9,8 +9,10 @@ block content
       ul.large-block-grid-3.medium-block-grid-2.small-block-grid-1
         for booking in bookings
           li
-            a(href='/bookings/#{booking._id}', class='card')
+            div.card
               div.booking-item
                 h1.card_title #{booking.bookingType}
                 form(method='POST', action='/bookings/delete/#{booking._id}?_method=DELETE')
-                  button(type='submit', class='btn btn_delete') <i class="fa fa-close"></i> Avbestill
+                  button(type='submit', class='btn btn_delete right') <i class="fa fa-close"></i> delete
+                button(class='btn btn_success')
+                  a(href='/bookings/#{booking._id}') Details

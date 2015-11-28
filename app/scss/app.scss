@@ -1,4 +1,6 @@
 // Main SCSS file for importing settings and modules
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700');
+
 @import
 'foundation/foundation/components/grid',
 'foundation/foundation/components/block-grid';
@@ -21,4 +23,6 @@
 'modules/sidebar-menu',
 'modules/cards',
 'modules/single',
-'modules/datetimepicker';
+'modules/datetimepicker',
+'modules/home',
+'modules/buttons';
