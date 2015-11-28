@@ -1,0 +1,15 @@
+extends ./layout.jade
+
+block title
+  title Login
+
+block content
+  h1 Login
+  
+  form(action='/login', method='post')
+    input(type='text', name='email', placeholder='E-mail', required)
+    input(type='password', name='password', placeholder='Password', required)
+    button(type='submit', class='btn btn_success') Log in
+    
+    p Need an account? <a href="/signup">Signup</a>
+    p Or go <a href="/">home</a>.

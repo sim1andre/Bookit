@@ -20,7 +20,7 @@ fs.readdirSync('./api/models').forEach(function (file) {
 });
 
 app.set('view engine', 'jade');
-app.set('views', __dirname + '/app/views')
+app.set('views', __dirname + '/app/views');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));

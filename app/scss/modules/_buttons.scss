@@ -1,0 +1,42 @@
+.btn {
+  padding: calc-em(10px) calc-em(20px) calc-em(10px) calc-em(20px);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  &_success {
+    background: $button-success-color;
+    margin-right: calc-em(16px);
+    color: #fff;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    &:hover {
+      background: $button-success-hover;
+    }
+  }
+
+  &_delete {
+    background: $button-delete-color;
+    color: #fff;
+
+    &:hover {
+      background: $button-delete-hover;
+    }
+  }
+
+  &_default {
+    background: $primaryColor;
+    color: #fff;
+
+    &:hover {
+      background: $secondaryColor;
+    }
+  }
+
+  &_warning {
+
+  }
+}

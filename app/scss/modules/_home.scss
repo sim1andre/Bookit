@@ -1,0 +1,20 @@
+.heading-section {
+  //background: #899142;
+  background: coral;
+  padding: calc-em(16px);
+
+  .home-title{
+    color: #fff;
+    font-weight: 300;
+    margin: 0;
+    font-size: calc-em(42px);
+  }
+
+  .lead {
+    color: #fff;
+    font-weight: 300;
+    margin: 0;
+    font-size: calc-em(18px);
+  }
+
+}

@@ -4,9 +4,9 @@ html
   head
     block title
       title HeroyvJS
-    link(rel='stylesheet', href='/css/app.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='/css/app.css')
   body
     header.header
         
@@ -21,15 +21,23 @@ html
                 a(href='/bookings') <i class="fa fa-bookmark"></i> Bookings
               li
                 a(href='/bookings/create') <i class="fa fa-plus"></i> Create
+              li
+                a(href='/profile') <i class="fa fa-heart"></i> Your profile
+              li
+                a(href='/login') <i class="fa fa-sign-in"></i> Log in
+              li
+                a(href='/signup') <i class="fa fa-user-plus"></i> Sign up
+              
         div.content.column.medium-10
           block content
       
-    script(src='../js/bundle.js')
-    script(src)
+    
     script(src='../vendor/jquery/dist/jquery.min.js')
     script(src='../vendor/moment/moment.js')
+    script(src='../vendor/foundation.min.js')
     script(src='../vendor/moment-timezone/moment-timezone.js')
     script(src='../vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
+    script(src='../js/bundle.js')
     script.
       $(function () {          
           
