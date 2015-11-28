@@ -1,0 +1,20 @@
+.card {
+  @extend %box-sizing;
+  background: #fff;
+  border: calc-em(1px) solid rgb(225, 225, 225);
+  display: block;
+  padding: calc-em(15px);
+  text-decoration: none;
+  color: $secondaryColor;
+
+  .card_title {
+    margin-top: 0;
+    font-size: calc-em(24px);
+    font-weight: 300;
+  }
+
+  .btn_delete {
+    background: $secondaryColor;
+    color: #fff;
+  }
+}

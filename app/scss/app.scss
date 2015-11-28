@@ -1,0 +1,20 @@
+// Main SCSS file for importing settings and modules
+@import
+'foundation/foundation/components/grid',
+'foundation/foundation/components/block-grid';
+
+
+@import
+'settings/variables',
+'settings/functions',
+'settings/mixins',
+'settings/placeholders';
+
+@import
+'modules/base',
+'modules/header',
+'modules/sidebar',
+'modules/content',
+'modules/sidebar-menu',
+'modules/cards',
+'modules/single';

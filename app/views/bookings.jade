@@ -1,0 +1,16 @@
+extends ./layout.jade
+
+block title
+  title Bookings
+
+block content
+  div.row
+    div.column
+      ul.large-block-grid-3.medium-block-grid-2.small-block-grid-1
+        for booking in bookings
+          li
+            a(href='/bookings/#{booking._id}', class='card')
+              div.booking-item
+                h1.card_title #{booking.bookingType}
+                form(method='POST', action='/bookings/delete/#{booking._id}?_method=DELETE')
+                  button(type='submit', class='btn btn_delete') <i class="fa fa-close"></i> Avbestill

@@ -1,0 +1,25 @@
+extends ./layout.jade
+
+block title
+  title Single
+
+block content
+  div.row
+    div.column
+      div.single-overview
+        h1.single-title #{booking.bookingType}
+        p Booket dato: #{booking.dateFormatted}
+        p Booket tid: #{booking.timeFormatted}
+        p #{booking.comments}
+        p Registered: #{booking.registeredFormatted}      
+    div.column
+      div.single-edit
+        form(method='POST', action='/bookings/update/#{booking._id}?_method=PUT')
+          select(name='bookingType' value='#{booking.bookingType}')
+            option(value='0') Velg type
+            option(value='PT') PT
+            option(value='Gruppetime') Gruppetime
+          input(type='date', name='bookingDate', format='dd.mm.yyyy', value='#{booking.bookingDate}')
+          input(type='date', name='bookingTime', format='dd.mm.yyyy', value='#{booking.bookingTime}')
+          textarea(name='comments', placeholder='Comments') #{booking.comments}
+          button(type='submit') UPDATE

@@ -1,0 +1,28 @@
+.sidebar-menu {
+  width:100%;
+  list-style:none;
+  padding:0;
+  margin:0;
+
+  li {
+    @extend %transition03;
+    width:100%;
+    height:auto;
+    border-bottom:solid calc-em(1px) rgb(225,225,225);
+
+    a {
+      @extend %transition03;
+      display:block;
+      padding:calc-em(20px);
+      font-size:calc-em(18px);
+      font-weight:bold;
+      text-decoration:none;
+      color:$secondaryColor;
+    }
+
+    &:hover {
+      background:rgb(225,225,225);
+    }
+
+  }
+}

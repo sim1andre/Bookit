@@ -1,0 +1,19 @@
+extends ./layout.jade
+
+block title
+  title Create
+
+block content
+  h1 Create a new Booking
+  if message
+    p #{message}
+  
+  form(method='post', action='/bookings/create')
+    select(name='bookingType', required)
+      option(selected) Velg type
+      option(value='PT') PT
+      option(value='Gruppetime') Gruppetime
+    input(type='date', name='bookingDate', format='dd.mm.yyyy', required)
+    input(type='date', name='bookingTime', required)
+    textarea(name='comments', placeholder='Comments')
+    button(type='submit') CREATE

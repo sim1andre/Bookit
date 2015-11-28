@@ -1,0 +1,6 @@
+node_modules
+.git
+bundle.js
+public/css/app.css
+public/js/bundle.js
+bower_components

@@ -1,0 +1,5 @@
+@function calc-em($value) {
+  $px: $value / 16px;
+  $em: $px * 1em;
+  @return $em;
+}
