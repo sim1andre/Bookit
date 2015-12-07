@@ -9,7 +9,10 @@ html
     link(rel='stylesheet', href='/css/app.css')
   body
     header.header
-        
+      div.row
+        div.column
+          if (user)
+            span.username Welcome, #{user.username}
     main.push
       div.row
         div.sidebar.column.medium-2
@@ -17,16 +20,18 @@ html
             ul.sidebar-menu
               li
                 a(href='/') <i class="fa fa-home"></i> Home
-              li
-                a(href='/bookings') <i class="fa fa-bookmark"></i> Bookings
-              li
-                a(href='/bookings/create') <i class="fa fa-plus"></i> Create
-              li
-                a(href='/profile') <i class="fa fa-heart"></i> Your profile
-              li
-                a(href='/login') <i class="fa fa-sign-in"></i> Log in
-              li
-                a(href='/signup') <i class="fa fa-user-plus"></i> Sign up
+              if (!user)
+                li
+                  a(href='/login') <i class="fa fa-sign-in"></i> Log in
+                li
+                  a(href='/register') <i class="fa fa-user-plus"></i> Sign up
+              if (user)
+                li
+                  a(href='/bookings') <i class="fa fa-bookmark"></i> Bookings
+                li
+                  a(href='/bookings/create') <i class="fa fa-plus"></i> Create
+                li
+                  a(href='/logout') Log out
               
         div.content.column.medium-10
           block content

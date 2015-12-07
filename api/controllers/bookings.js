@@ -12,7 +12,7 @@ class BookingController {
       if(err){
         res.render('error', {err:err});
       }
-      res.render('bookings', {bookings:bookings});
+      res.render('bookings', {bookings: bookings, user: req.user });
     });
   }
 
@@ -25,9 +25,9 @@ class BookingController {
       booking.timeFormatted = moment(booking.bookingDate).endOf('hours').fromNow();
 
       if(err) {
-        res.render('error', {err:err});
+        res.render('error', {err: err});
       }
-      res.render('single', {booking:booking});
+      res.render('single', {booking: booking, user: req.user});
     });
   }
 
@@ -38,7 +38,8 @@ class BookingController {
       if(err) {
         res.render('error', {err: err});
       }
-      res.render('create', {message: 'Du har lagret en ny booking'});
+      res.render('create',
+      {message: 'Du har lagret en ny booking', user: req.user});
     });
   }
 
@@ -60,6 +61,13 @@ class BookingController {
       }
       res.redirect('/bookings');
     });
+  }
+
+  static validateUser(req, res, next) {
+    if (!req.user) {
+      return res.redirect('/login');
+    }
+    next();
   }
 
 }

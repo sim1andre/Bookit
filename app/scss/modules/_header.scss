@@ -9,5 +9,11 @@ header {
     background:$primaryColor;
   }
 
+  .username {
+    line-height: calc-em(60px);
+    float: right;
+    color: white;
+  }
+
 
 }
