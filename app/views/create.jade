@@ -8,12 +8,20 @@ block content
   if message
     p #{message}
   
-  form(method='post', action='/bookings/create')
-    select(name='bookingType', required)
-      option(selected) Velg type
-      option(value='PT') PT
-      option(value='Gruppetime') Gruppetime
-    input(type='date', name='bookingDate', format='dd.mm.yyyy', required)
-    input(type='date', name='bookingTime', required)
-    textarea(name='comments', placeholder='Comments')
-    button(type='submit', class='btn btn_default') CREATE
+  div.row
+    div.column.small-12
+      form(method='post', action='/bookings/create')
+        div.row
+          div.column
+            button(type='submit', class='btn btn_default right publish') PUBLISH
+        div.row
+          div.column.small-12.medium-6
+            select(name='bookingType', required)
+              option(selected) Velg type
+              option(value='PT') PT
+              option(value='Gruppetime') Gruppetime
+            input(type='date', name='bookingDate', format='dd.mm.yyyy', required)
+            input(type='date', name='bookingTime', required)
+          div.column.small-12.medium-6
+            textarea(name='comments', placeholder='Comments')
+            

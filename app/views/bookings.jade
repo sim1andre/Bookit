@@ -13,7 +13,7 @@ block content
               div.booking-item
                 h1.card_title #{booking.bookingType}
                 if (user)
-                  form(method='POST', action='/bookings/delete/#{booking._id}?_method=DELETE', class='delete_form')
-                    button(type='submit', class='btn btn_delete right') <i class="fa fa-close"></i> delete
-                  button(class='btn btn_success')
+                  form(method='POST', action='/bookings/delete/#{booking._id}?_method=DELETE', class='delete_form', style='display: inline-block')
+                    button(type='submit', class='btn btn_delete left') <i class="fa fa-close"></i> delete
+                  button(class='btn btn_success left')
                     a(href='/bookings/#{booking._id}') Details
