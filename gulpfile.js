@@ -4,6 +4,20 @@ const browserify = require("browserify");
 const babelify = require("babelify");
 const nodemon = require('gulp-nodemon');
 const sass = require('gulp-sass');
+const watchify = require('watchify');
+const source = require('vinyl-source-stream');
+const bufferifyify = require('vinyl-buffer');
+const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');
+const argv = require('yargs').argv;
+const livereload = require('gulp-livereload');
+const uglify = require('gulp-uglify');
+const gulpif = require('gulp-if');
+const scsslint = require('gulp-scss-lint');
+const eslint = require('gulp-eslint');
+const runSequence = require('run-sequence');
+
+const dev = !argv.production ? true : false;
 
 
 //Imports foundation sass into source/css folder
@@ -17,24 +31,7 @@ gulp.task('foundation-js', function () {
   .pipe(gulp.dest('./app/js/modules/foundation'));
 });
 
-gulp.task('import-foundation', ['foundation-sass']);
-gulp.task('import-foundation-js', ['foundation-js']);
 
-
-gulp.task('bundle', function (){
-  browserify({ debug: true })
-    .transform(babelify)
-    .require("app/js/app.js", { entry: true })
-    .bundle()
-    .on("error", function (err) { console.log("Error: " + err.message); })
-    .pipe(fs.createWriteStream("public/js/bundle.js"));
-})
-
-gulp.task('sass', function () {
-  gulp.src('app/scss/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('public/css'));
-});
 
 gulp.task('startServer', function () {
   nodemon({
@@ -44,9 +41,53 @@ gulp.task('startServer', function () {
   })
 })
 
-gulp.task('watch', function() {
-  gulp.watch('app/js/**/*.js',['bundle']);
-  gulp.watch('app/scss/**/*.scss', ['sass']);
+gulp.task('bundle', () => {
+  const bundler = browserify({
+    cache: {},
+    packageCache: {},
+    entries: ['./app/js/app.js'],
+    debug: dev
+  });
+
+  bundler.transform(babelify, {presets: ['es2015']});
+
+  if (dev) bundler = watchify(bundler);
+
+  bundler.on('update', bundle);
+
+  function bundle() {
+    return bundler
+      .bundle()
+      .pipe(source('./app/js/app.js'))
+      .pipe(bufferifyify())
+      .pipe(gulpif(!dev, uglify()))
+      .pipe(rename('app.js'))
+      .pipe(gulp.dest('./public/js/'))
+  }
+
+  bundle();
 });
 
+gulp.task('sass', () => {
+  gulp.src('./app/scss/app.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      outputStyle: dev ? 'nested' : 'compressed'
+    }).on('error', sass.logError))
+    .pipe(gulpif(dev, sourcemaps.write()))
+    .pipe(gulp.dest('./public/css'))
+    .pipe(gulpif(dev, livereload()));
+});
+
+gulp.task('watch', () => {
+  livereload.listen();
+  gulp.watch('./app/scss/**/*.scss', ['sass']);
+  gulp.watch('./app/js/**/*.js', ['bundle']);
+});
+
+
+
+gulp.task('compile', ['bundle', 'sass']);
+gulp.task('import-foundation', ['foundation-sass']);
+gulp.task('import-foundation-js', ['foundation-js']);
 gulp.task('default', ['watch', 'bundle', 'startServer', 'sass']);

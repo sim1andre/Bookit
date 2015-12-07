@@ -15,25 +15,27 @@ html
             span.username Welcome, #{user.username}
     main.push
       div.row
-        div.sidebar.column.medium-2
-          aside
-            ul.sidebar-menu
-              li
-                a(href='/') <i class="fa fa-home"></i> Home
-              if (!user)
+        div.column.medium-3.small-12
+          div.sidebar
+            aside
+              ul.sidebar-menu
                 li
-                  a(href='/login') <i class="fa fa-sign-in"></i> Log in
-                li
-                  a(href='/register') <i class="fa fa-user-plus"></i> Sign up
-              if (user)
-                li
-                  a(href='/bookings') <i class="fa fa-bookmark"></i> Bookings
-                li
-                  a(href='/bookings/create') <i class="fa fa-plus"></i> Create
-                li
-                  a(href='/logout') Log out
+                  a(href='/') <i class="fa fa-home"></i> Home
+                if (!user)
+                  li
+                    a(href='/login') <i class="fa fa-sign-in"></i> Log in
+                  li
+                    a(href='/register') <i class="fa fa-user-plus"></i> Sign up
+                if (user)
+                  li
+                    a(href='/bookings') <i class="fa fa-bookmark"></i> Bookings
+                  li
+                    a(href='/bookings/create') <i class="fa fa-plus"></i> Create
+                  li
+                    a(href='/logout') Log out
               
-        div.content.column.medium-10
+        div.column.medium-9.small-12
+          div.content
           block content
       
     

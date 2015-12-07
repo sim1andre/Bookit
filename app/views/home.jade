@@ -7,5 +7,9 @@ block content
   div.row
     div.column
       div.heading-section
-        h1.home-title Welcome to Book-it!
-        p.lead - <em>Where plans are saved</em>
+        if (!user)
+          h1.home-title Welcome to Book-it!
+          p.lead - <em>Where plans are saved</em>
+        else
+          h1.home-title Make your first booking right now!
+          p.lead It's super easy! Just head over to the <a href='/bookings'>bookings</a> section
