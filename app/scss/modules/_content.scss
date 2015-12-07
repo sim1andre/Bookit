@@ -3,12 +3,7 @@ main {
   &.push {
     padding-top:calc-em(60px);
   }
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    padding-left: 0;
-  }
+  
   .content {
     @extend %box-sizing;
     padding:calc-em(20px);
