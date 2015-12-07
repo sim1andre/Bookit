@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const jade = require('jade');
 const fs = require('fs');
 const methodOverride = require('method-override');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const cookieParser = require('cookie-parser');
 require('dotenv').load();
 
 const app = express();
@@ -25,8 +28,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'oierkmfkerjndfwjiremoeifmerklmoijfmeroim',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-require('./config/routes')(app);
+// passport config
+const Account = require('./api/models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+require('./config/routes')(app, passport);
 
 app.listen(port, function() {
   console.log('Magic is happening on port ' + port);
