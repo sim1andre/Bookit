@@ -7,6 +7,10 @@ body {
   margin:0;
 }
 
+h1 {
+  margin-top: 0;
+}
+
 .no-pad-right {
   padding-right:0;
 }
@@ -52,5 +56,5 @@ select {
 textarea {
     @extend %field-style;
     resize:none;
-    height:calc-em(150px);
+    height:calc-em(190px);
 }
