@@ -6,7 +6,11 @@ const BookingSchema = new Schema ({
   bookingDate: {type: Date, required: true},
   bookingTime: {type: Date, required: true},
   comments: {type: String},
-  registered: {type: Date, default: Date.now}
+  registered: {type: Date, default: Date.now},
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'Account'
+  }
 });
 
 module.exports = mongoose.model('Booking', BookingSchema);

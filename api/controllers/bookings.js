@@ -7,7 +7,7 @@ const moment = require('moment');
 class BookingController {
 
   static findBookings(req, res) {
-    Booking.find({},(err, bookings) => {
+    Booking.find({'author': req.user._id},(err, bookings) => {
 
       if(err){
         res.render('error', {err:err});
@@ -32,7 +32,8 @@ class BookingController {
   }
 
   static createBooking(req, res) {
-    let booking = new Booking(req.body);
+    req.body.author = req.user._id;
+    const booking = new Booking(req.body);
 
     booking.save((err) => {
       if(err) {
