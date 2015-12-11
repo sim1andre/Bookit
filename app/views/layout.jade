@@ -11,6 +11,7 @@ html
     header.header
       div.row
         div.column
+          a(href='/', class='logo') Book<strong>it</strong>
           if (user)
             span.username Welcome, #{user.username}
     main.push
@@ -42,7 +43,7 @@ html
     script(src='../vendor/jquery/dist/jquery.min.js')
     script(src='../vendor/moment/moment.js')
     script(src='../vendor/foundation.min.js')
-    script(src='../vendor/moment-timezone/moment-timezone.js')
+    //script(src='../vendor/moment-timezone/moment-timezone.js')
     script(src='../vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
     script(src='../js/bundle.js')
     script.
@@ -52,7 +53,7 @@ html
                inline: true,
                sideBySide: false
            });
-           
+
        });
       
     

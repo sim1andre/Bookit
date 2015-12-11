@@ -6,6 +6,8 @@ block title
 block content
   div.row
     div.column
+      if (!bookings.length)
+        h2 You have no bookings
       ul.large-block-grid-1.medium-block-grid-1.small-block-grid-1
         for booking in bookings
           li

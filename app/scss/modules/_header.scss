@@ -6,6 +6,17 @@ header.header {
   min-height:calc-em(60px);
   background:$primaryColor;
 
+  .logo {
+    line-height: 60px;
+    color: #fff;
+    font-size: 1.25em;
+    text-decoration: none;
+
+    strong {
+      color: $dark;
+    }
+  }
+
   .username {
     line-height: calc-em(60px);
     float: right;
